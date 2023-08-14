@@ -1,4 +1,4 @@
-export type Character = {
+export type CharacterNoId = {
   Estado: boolean;
   Genero: string;
   Historia: string;
@@ -8,3 +8,9 @@ export type Character = {
   updatedAt: string;
   id: string;
 };
+
+export type idCharacter = {
+  id: string;
+};
+
+export type Character = CharacterNoId & idCharacter;
