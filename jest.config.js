@@ -6,6 +6,6 @@ export default {
   testPathIgnorePatterns: ['dist'],
   resolver: 'jest-ts-webcompat-resolver',
   moduleNameMapper: {
-    '.(css|scss)$': 'identity-obj-proxy',
+    '\\.(css|scss)$': 'identity-obj-proxy',
   },
 };
