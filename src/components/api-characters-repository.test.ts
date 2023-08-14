@@ -116,5 +116,34 @@ describe('Given ApiCharactersRepository class ', () => {
 
       expect(repository.create(newCharacterTest)).rejects.toThrow();
     });
+    test('Then the method delete should be used', () => {
+      global.fetch = jest.fn().mockResolvedValueOnce({
+        ok: true,
+        json: jest.fn().mockResolvedValue('Test'),
+      });
+      const newCharacterTest = {
+        Estado: true,
+        Genero: 'Femenino',
+        Historia: 'TEST 01.2',
+        Imagen: 'img',
+        Nombre: 'NAME',
+        Ocupacion: 'developer',
+        updatedAt: 'test_update',
+        _id: 'testid',
+      };
+      repository.create(newCharacterTest);
+      expect(global.fetch).toHaveBeenCalled();
+    });
+    test('Then the method delete should give error', () => {
+      global.fetch = jest.fn().mockResolvedValueOnce({
+        ok: false,
+        json: jest.fn().mockResolvedValue('error'),
+      });
+      const newCharacterTest = {
+        _id: 'testid',
+      };
+
+      expect(repository.delete(newCharacterTest._id)).rejects.toThrow();
+    });
   });
 });
