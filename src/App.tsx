@@ -1,3 +1,4 @@
+import React from 'react';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
 function App() {
@@ -6,7 +7,7 @@ function App() {
       <Header></Header>
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App;
