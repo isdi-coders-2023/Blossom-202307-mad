@@ -11,5 +11,3 @@ export function Footer() {
     </footer>
   );
 }
-
-// {style.footer}
