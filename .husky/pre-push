@@ -14,3 +14,4 @@ fi
 
 exit 0
 npx --no -- commitlint --edit "$1"
+
