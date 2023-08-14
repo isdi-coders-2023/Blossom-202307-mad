@@ -7,7 +7,7 @@ export function Header() {
       </h2>
       <div>
         <button>Favoritos</button>
-        <button>Crear Personaje</button>
+        <button>Crear Personaje de los Simpsons</button>
       </div>
     </>
   );
