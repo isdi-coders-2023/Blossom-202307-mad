@@ -6,5 +6,5 @@ export type Character = {
   Nombre: string;
   Ocupacion: string;
   updatedAt: string;
-  _id: string;
+  id: string;
 };

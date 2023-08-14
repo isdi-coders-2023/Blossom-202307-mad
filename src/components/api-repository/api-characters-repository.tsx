@@ -1,7 +1,7 @@
-import { Character } from '../model/character';
-import { Repository } from './api-repository/repository';
+import { Character } from '../../model/character';
+import { Repository } from './repository';
 
-export class ApiSimpsonsRepository implements Repository<Character[]> {
+export class ApiSimpsonsRepository implements Repository<Character> {
   urlBase: string;
   constructor(urlBase: string) {
     this.urlBase = urlBase;

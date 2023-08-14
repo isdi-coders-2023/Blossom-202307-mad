@@ -35,7 +35,7 @@ describe('Given ApiCharactersRepository class ', () => {
         Nombre: 'NAME',
         Ocupacion: 'developer',
         updatedAt: 'test_update',
-        _id: 'testid',
+        id: 'testid',
       };
       const characterUpdatedTest = {
         Estado: true,
@@ -45,9 +45,9 @@ describe('Given ApiCharactersRepository class ', () => {
         Nombre: 'NAME',
         Ocupacion: 'developer',
         updatedAt: 'test_update',
-        _id: 'testid',
+        id: 'testid',
       };
-      repository.update(characterTest._id, characterUpdatedTest);
+      repository.update(characterTest.id, characterUpdatedTest);
       expect(global.fetch).toHaveBeenCalled();
     });
     test('Then the method update should give error', () => {
@@ -63,7 +63,7 @@ describe('Given ApiCharactersRepository class ', () => {
         Nombre: 'NAME',
         Ocupacion: 'developer',
         updatedAt: 'test_update',
-        _id: 'testid',
+        id: 'testid',
       };
       const characterUpdatedTest = {
         Estado: true,
@@ -73,10 +73,10 @@ describe('Given ApiCharactersRepository class ', () => {
         Nombre: 'NAME',
         Ocupacion: 'developer',
         updatedAt: 'test_update',
-        _id: 'testid',
+        id: 'testid',
       };
       expect(
-        repository.update(characterTest._id, characterUpdatedTest)
+        repository.update(characterTest.id, characterUpdatedTest)
       ).rejects.toThrow();
     });
 
@@ -93,7 +93,7 @@ describe('Given ApiCharactersRepository class ', () => {
         Nombre: 'NAME',
         Ocupacion: 'developer',
         updatedAt: 'test_update',
-        _id: 'testid',
+        id: 'testid',
       };
       repository.create(newCharacterTest);
       expect(global.fetch).toHaveBeenCalled();
@@ -111,7 +111,7 @@ describe('Given ApiCharactersRepository class ', () => {
         Nombre: 'NAME',
         Ocupacion: 'developer',
         updatedAt: 'test_update',
-        _id: 'testid',
+        id: 'testid',
       };
 
       expect(repository.create(newCharacterTest)).rejects.toThrow();
@@ -129,7 +129,7 @@ describe('Given ApiCharactersRepository class ', () => {
         Nombre: 'NAME',
         Ocupacion: 'developer',
         updatedAt: 'test_update',
-        _id: 'testid',
+        id: 'testid',
       };
       repository.create(newCharacterTest);
       expect(global.fetch).toHaveBeenCalled();
@@ -140,10 +140,10 @@ describe('Given ApiCharactersRepository class ', () => {
         json: jest.fn().mockResolvedValue('error'),
       });
       const newCharacterTest = {
-        _id: 'testid',
+        id: 'testid',
       };
 
-      expect(repository.delete(newCharacterTest._id)).rejects.toThrow();
+      expect(repository.delete(newCharacterTest.id)).rejects.toThrow();
     });
   });
 });
