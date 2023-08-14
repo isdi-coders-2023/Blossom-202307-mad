@@ -9,3 +9,7 @@ Trabajo en equipo de la semana 5 del bootcamp de ISDI Coders, que consiste en de
 A través de un servidor local se podrán agregar o modificar personajes aplicando la metodología CRUD (create, read, update, delete).
 
 Al haber un error en la obtención de datos de la API, se mostrará una página de error.
+
+# Detalles
+
+font-family: 'Arimo', sans-serif;
