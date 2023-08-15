@@ -17,7 +17,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
+    background-color: #f2d541;
+    padding: 2rem;
+    border-radius: 15px;
 
     .textForm {
       width: 15rem;
@@ -25,8 +28,29 @@ body {
       text-align: center;
       font-size: 1.2rem;
       background-color: #f2d541;
-      border: solid 3px #f2c53d;
+      border: none;
+      border-bottom: 3px solid #f2c53d;
       border-radius: 15px;
+    }
+    .genderBox {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .input {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      .radioInput {
+        margin: 0;
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+    .genderType {
+      font-size: 1.5rem;
     }
 
     .fieldset {
@@ -48,11 +72,28 @@ body {
       width: 10rem;
       font-size: 2rem;
     }
+    .dateBox {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .labelDate {
+      font-size: 1.2rem;
+    }
+    .inputDate {
+      font-family: Helvetica, sans-serif;
+      font-size: 1.5rem;
+      padding: 1rem;
+      background-color: #f2c53d;
+      border: none;
+      border-radius: 15px;
+      align-self: center;
+    }
   }
 
   .buttonForm {
-    width: 6rem;
-    height: 2.5rem;
+    width: 7rem;
+    height: 3rem;
     text-align: center;
     font-size: 1.2rem;
     background-color: #f2c53d;

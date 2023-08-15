@@ -8,12 +8,16 @@ export function Form() {
     const formElement = ev.currentTarget as HTMLFormElement;
 
     const newCharacter: CharacterNoId = {
-      name: (formElement.elements.item(0) as HTMLFormElement).value,
-      surname: formElement.elements.namedItem('surename').value,
-      job: formElement.elements.namedItem('job').value,
-      state: formElement.elements.namedItem('state').value,
-      description: formElement.elements.namedItem('description').value,
-      url: formElement.elements.namedItem('url').value,
+      name: (formElement.elements.namedItem('name') as HTMLFormElement).value,
+      gender: (formElement.elements.namedItem('gender') as HTMLFormElement)
+        .value,
+      job: (formElement.elements.namedItem('job') as HTMLFormElement).value,
+      state: (formElement.elements.namedItem('state') as HTMLFormElement).value,
+      history: (formElement.elements.namedItem('history') as HTMLFormElement)
+        .value,
+      image: (formElement.elements.namedItem('image') as HTMLFormElement).value,
+      updatedAt: (formElement.elements.namedItem('date') as HTMLFormElement)
+        .value,
     };
     return newCharacter;
   };
@@ -29,13 +33,28 @@ export function Form() {
           className={styles['textForm']}
           required
         />
-        <input
-          type="text"
-          placeholder="Ahora sus apellidos"
-          name="surname"
-          className={styles['textForm']}
-          required
-        />
+
+        <div className={styles['genderBox']}>
+          <legend className={styles['genderType']}>¿Género?</legend>
+          <div className={styles['input']}>
+            <input
+              type="radio"
+              name="gender"
+              id="masc"
+              className={styles['radioInput']}
+            />
+            <label htmlFor="masc">Masculino</label>
+          </div>
+          <div className={styles['input']}>
+            <input
+              type="radio"
+              name="gender"
+              id="fem"
+              className={styles['radioInput']}
+            />
+            <label htmlFor="fem">Femenino</label>
+          </div>
+        </div>
         <input
           type="text"
           placeholder="¿Cuál es su trabajo?"
@@ -43,7 +62,7 @@ export function Form() {
           className={styles['textForm']}
         />
         <div className={styles['fieldsed']}>
-          <span className={styles['legend']}>¿Cuál es su estado?</span>
+          <span className={styles['legend']}>¿Cómo se encuentra?</span>
           <div className={styles['select-container']}>
             <select name="state" id="state-select">
               <option value="alive">Vivo</option>
@@ -55,17 +74,31 @@ export function Form() {
         </div>
 
         <textarea
-          placeholder="Añade una descripción"
-          name="description"
+          placeholder="Añade aquí su historia"
+          name="history"
           rows={4}
           cols={40}
         />
         <input
           type="text"
           placeholder="Pega la url de la imagen"
-          name="url"
+          name="image"
           className={styles['textForm']}
         />
+        <div className={styles['dateBox']}>
+          <label htmlFor="updatedAt" className={styles['labelDate']}>
+            ¿Cuándo apareció por última vez?
+          </label>
+
+          <input
+            type="date"
+            id="updatedAt"
+            name="updatedAt"
+            min="1989-12-17"
+            max="2023-08-19"
+            className={styles['inputDate']}
+          />
+        </div>
       </div>
       <button className={styles['buttonForm']} type="submit">
         Añadir
