@@ -1,0 +1,39 @@
+.mainError {
+  color: yellow;
+  background-color: black;
+  box-sizing: border-box;
+  font-family: 'Arimo', sans-serif;
+  font-size: 15px;
+  padding: 20px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+
+  .h2Error {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .pNarices {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .imgError {
+    width: 100vw;
+    height: auto;
+  }
+
+  .buttonAtras {
+    color: white;
+    border: 2px solid white;
+    background-color: black;
+    border-radius: 17px;
+    width: 20%;
+    padding: 10px;
+    font-size: 1em;
+    height: auto;
+  }
+}
