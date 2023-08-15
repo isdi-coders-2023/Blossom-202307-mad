@@ -1,5 +1,5 @@
 export type Character = {
-  Estado: boolean;
+  Estado: string;
   Genero: string;
   Historia: string;
   Imagen: string;
