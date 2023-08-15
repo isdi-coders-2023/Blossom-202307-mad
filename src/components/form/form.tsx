@@ -1,8 +1,25 @@
+import { SyntheticEvent } from 'react';
+import { CharacterNoId } from '../../model/character';
 import styles from './form.module.scss';
 
 export function Form() {
+  const handleSubmit = (ev: SyntheticEvent) => {
+    ev.preventDefault();
+    const formElement = ev.currentTarget as HTMLFormElement;
+
+    const newCharacter: CharacterNoId = {
+      name: (formElement.elements.item(0) as HTMLFormElement).value,
+      surname: formElement.elements.namedItem('surename').value,
+      job: formElement.elements.namedItem('job').value,
+      state: formElement.elements.namedItem('state').value,
+      description: formElement.elements.namedItem('description').value,
+      url: formElement.elements.namedItem('url').value,
+    };
+    return newCharacter;
+  };
+
   return (
-    <form action="" className={styles['form']}>
+    <form action="" onSubmit={handleSubmit} className={styles['form']}>
       <h2 className={styles['formTitle']}>¡Crea tu propio personaje!</h2>
       <div className={styles['formContainer']}>
         <input
@@ -10,12 +27,14 @@ export function Form() {
           placeholder="Escribe su nombre"
           name="name"
           className={styles['textForm']}
+          required
         />
         <input
           type="text"
           placeholder="Ahora sus apellidos"
           name="surname"
           className={styles['textForm']}
+          required
         />
         <input
           type="text"
@@ -25,42 +44,14 @@ export function Form() {
         />
         <div className={styles['fieldsed']}>
           <span className={styles['legend']}>¿Cuál es su estado?</span>
-
-          <input
-            type="radio"
-            id="alive"
-            name="state"
-            value="alive"
-            className={styles['input']}
-          />
-          <label htmlFor="alive">Vivo</label>
-
-          <input
-            type="radio"
-            id="unknown"
-            name="state"
-            value="unknown"
-            className={styles['input']}
-          />
-          <label htmlFor="unknown">Desconocido</label>
-
-          <input
-            type="radio"
-            id="death"
-            name="state"
-            value="death"
-            className={styles['input']}
-          />
-          <label htmlFor="death">Fallecido</label>
-
-          <input
-            type="radio"
-            id="fictitious"
-            name="state"
-            value="fictitious"
-            className={styles['input']}
-          />
-          <label htmlFor="fictitious">Ficticio</label>
+          <div className={styles['select-container']}>
+            <select name="state" id="state-select">
+              <option value="alive">Vivo</option>
+              <option value="dead">Fallecido</option>
+              <option value="unknown">Desconocido</option>
+              <option value="fition">Ficticio</option>
+            </select>
+          </div>
         </div>
 
         <textarea
@@ -68,15 +59,17 @@ export function Form() {
           name="description"
           rows={4}
           cols={40}
-          className={styles['textarea']}
         />
         <input
           type="text"
           placeholder="Pega la url de la imagen"
-          name="job"
+          name="url"
           className={styles['textForm']}
         />
       </div>
+      <button className={styles['buttonForm']} type="submit">
+        Añadir
+      </button>
     </form>
   );
 }

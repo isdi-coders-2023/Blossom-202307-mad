@@ -1,10 +1,23 @@
-import { Character } from '../../model/character';
+import { Character, CharacterIncoming } from '../../model/character';
 import { Repository } from './repository';
 
 export class ApiSimpsonsRepository implements Repository<Character> {
   urlBase: string;
   constructor(urlBase: string) {
     this.urlBase = urlBase;
+  }
+
+  private mapData(data: CharacterIncoming): Character {
+    return {
+      gender: data.Genero,
+      history: data.Historia,
+      image: data.Imagen,
+      name: data.Nombre,
+      job: data.Ocupacion,
+      updatedAt: data.updatedAt,
+      state: data.Estado,
+      id: data._id,
+    } as Character;
   }
 
   async getAll(): Promise<Character[]> {
@@ -15,7 +28,7 @@ export class ApiSimpsonsRepository implements Repository<Character> {
       );
     }
     const data = await request.json();
-    return data;
+    return data.forEach((item: CharacterIncoming) => this.mapData(item));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -32,7 +45,7 @@ export class ApiSimpsonsRepository implements Repository<Character> {
         `Error ${request.status}: ${request.statusText}. Try again.`
       );
     const data = await request.json();
-    return data;
+    return this.mapData(data);
   }
   async update(_id: string, item: Partial<Character>): Promise<Character> {
     const url = this.urlBase + '/' + _id;
@@ -48,7 +61,7 @@ export class ApiSimpsonsRepository implements Repository<Character> {
         `Error ${request.status}: ${request.statusText}. Try again.`
       );
     const data = await request.json();
-    return data;
+    return this.mapData(data);
   }
 
   async delete(_id: string): Promise<void> {

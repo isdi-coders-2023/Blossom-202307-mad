@@ -1,3 +1,6 @@
+body {
+  background-color: #d4f0ff;
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -22,19 +25,47 @@
       text-align: center;
       font-size: 1.2rem;
       background-color: #f2d541;
-      border: #f2c53d;
+      border: solid 3px #f2c53d;
       border-radius: 15px;
     }
 
     .fieldset {
-      background-color: #f2d541;
-      .legend {
-        border-radius: 15px;
-        text-align: center;
-      }
-      .input {
-        background-color: #f2d541;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    .legend {
+      align-self: center;
+      font-size: 1.2rem;
+      margin: 1rem;
+    }
+    .select-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 2rem;
+      width: 10rem;
+      font-size: 2rem;
+    }
+  }
+
+  .buttonForm {
+    width: 6rem;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #f2c53d;
+    border: none;
+    border-radius: 15px;
+    margin: 2rem;
+    cursor: pointer;
+  }
+  .buttonForm:hover {
+    background-color: #d3ac39;
+  }
+  .buttonForm:active {
+    background-color: #d3ac39;
+    transform: translate(1px, 5px);
   }
 }
