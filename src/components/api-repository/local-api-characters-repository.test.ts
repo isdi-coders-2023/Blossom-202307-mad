@@ -1,9 +1,28 @@
 import { LocalApiSimpsonsRepository } from './local-api-characters-repository';
 
 describe('Given the class LocalApiSimpsonsRepository', () => {
-  describe('When I make an instance of it', () => {
+  describe('When I make an instance of it with a mock of two characters', () => {
     const localRepository = new LocalApiSimpsonsRepository('');
-
+    const characterTest = {
+      Estado: 'vivo',
+      Genero: 'Masculino',
+      Historia: 'TEST 01',
+      Imagen: 'img',
+      Nombre: 'NAME',
+      Ocupacion: 'developer',
+      updatedAt: 'test_update',
+      id: 'testid',
+    };
+    const characterUpdatedTest = {
+      Estado: 'vivo',
+      Genero: 'Femenino',
+      Historia: 'TEST 01.2',
+      Imagen: 'img',
+      Nombre: 'NAME',
+      Ocupacion: 'developer',
+      updatedAt: 'test_update',
+      id: 'testid',
+    };
     test('Then the method getTotal should be used', () => {
       global.fetch = jest.fn().mockResolvedValueOnce({
         ok: true,
@@ -27,26 +46,7 @@ describe('Given the class LocalApiSimpsonsRepository', () => {
         ok: true,
         json: jest.fn().mockResolvedValue('Test'),
       });
-      const characterTest = {
-        Estado: true,
-        Genero: 'Masculino',
-        Historia: 'TEST 01',
-        Imagen: 'img',
-        Nombre: 'NAME',
-        Ocupacion: 'developer',
-        updatedAt: 'test_update',
-        id: 'testid',
-      };
-      const characterUpdatedTest = {
-        Estado: true,
-        Genero: 'Femenino',
-        Historia: 'TEST 01.2',
-        Imagen: 'img',
-        Nombre: 'NAME',
-        Ocupacion: 'developer',
-        updatedAt: 'test_update',
-        id: 'testid',
-      };
+
       localRepository.update(characterTest.id, characterUpdatedTest);
       expect(global.fetch).toHaveBeenCalled();
     });
@@ -55,26 +55,7 @@ describe('Given the class LocalApiSimpsonsRepository', () => {
         ok: false,
         json: jest.fn().mockResolvedValue('error'),
       });
-      const characterTest = {
-        Estado: true,
-        Genero: 'Masculino',
-        Historia: 'TEST 01',
-        Imagen: 'img',
-        Nombre: 'NAME',
-        Ocupacion: 'developer',
-        updatedAt: 'test_update',
-        id: 'testid',
-      };
-      const characterUpdatedTest = {
-        Estado: true,
-        Genero: 'Femenino',
-        Historia: 'TEST 01.2',
-        Imagen: 'img',
-        Nombre: 'NAME',
-        Ocupacion: 'developer',
-        updatedAt: 'test_update',
-        id: 'testid',
-      };
+
       expect(
         localRepository.update(characterTest.id, characterUpdatedTest)
       ).rejects.toThrow();
@@ -85,7 +66,7 @@ describe('Given the class LocalApiSimpsonsRepository', () => {
         ok: true,
         json: jest.fn().mockResolvedValue('Test'),
       });
-      const newCharacterTest = {
+      const newSimpsonTest = {
         gender: 'test',
         history: 'test',
         image: 'test',
@@ -95,7 +76,7 @@ describe('Given the class LocalApiSimpsonsRepository', () => {
         state: 'test',
         id: 'test',
       };
-      localRepository.create(newCharacterTest);
+      localRepository.create(newSimpsonTest);
       expect(global.fetch).toHaveBeenCalled();
     });
     test('Then the method create should give error', () => {
@@ -103,7 +84,7 @@ describe('Given the class LocalApiSimpsonsRepository', () => {
         ok: false,
         json: jest.fn().mockResolvedValue('error'),
       });
-      const newCharacterTest = {
+      const newMockedCharacter = {
         gender: 'test',
         history: 'test',
         image: 'test',
@@ -114,14 +95,14 @@ describe('Given the class LocalApiSimpsonsRepository', () => {
         id: 'test',
       };
 
-      expect(localRepository.create(newCharacterTest)).rejects.toThrow();
+      expect(localRepository.create(newMockedCharacter)).rejects.toThrow();
     });
     test('Then the method delete should be used', () => {
       global.fetch = jest.fn().mockResolvedValueOnce({
         ok: true,
         json: jest.fn().mockResolvedValue('Test'),
       });
-      const newCharacterTest = {
+      const aCharacterTest = {
         gender: 'test',
         history: 'test',
         image: 'test',
@@ -131,7 +112,7 @@ describe('Given the class LocalApiSimpsonsRepository', () => {
         state: 'test',
         id: 'test',
       };
-      localRepository.create(newCharacterTest);
+      localRepository.create(aCharacterTest);
       expect(global.fetch).toHaveBeenCalled();
     });
     test('Then the method delete should give error', () => {
