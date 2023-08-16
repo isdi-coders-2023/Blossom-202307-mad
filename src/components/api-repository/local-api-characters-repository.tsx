@@ -2,12 +2,12 @@ import { Character, CharacterIncoming } from '../../model/character';
 import { Repository } from './repository';
 
 export class LocalApiSimpsonsRepository implements Repository<Character> {
-  urlBase: string;
-  constructor(urlBase: string) {
-    this.urlBase = urlBase;
+  localUrl: string;
+  constructor(localUrl: string) {
+    this.localUrl = localUrl;
   }
 
-  private mapData(data: CharacterIncoming): Character {
+  private mapLocalData(data: CharacterIncoming): Character {
     return {
       gender: data.Genero,
       history: data.Historia,
@@ -20,20 +20,20 @@ export class LocalApiSimpsonsRepository implements Repository<Character> {
     } as Character;
   }
 
-  async getAll(): Promise<Character[]> {
-    const request = await fetch(this.urlBase);
+  async getTotal(): Promise<Character[]> {
+    const request = await fetch(this.localUrl);
     if (!request.ok) {
       throw new Error(
         `Error ${request.status}: ${request.statusText}. Try again.`
       );
     }
     const data = await request.json();
-    return data.forEach((item: CharacterIncoming) => this.mapData(item));
+    return data.forEach((item: CharacterIncoming) => this.mapLocalData(item));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async create(_item: Character) {
-    const request = await fetch(this.urlBase, {
+    const request = await fetch(this.localUrl, {
       method: 'POST',
       body: 'JSON.stringify',
       headers: {
@@ -45,10 +45,10 @@ export class LocalApiSimpsonsRepository implements Repository<Character> {
         `Error ${request.status}: ${request.statusText}. Try again.`
       );
     const data = await request.json();
-    return this.mapData(data);
+    return this.mapLocalData(data);
   }
   async update(_id: string, item: Partial<Character>): Promise<Character> {
-    const url = this.urlBase + '/' + _id;
+    const url = this.localUrl + '/' + _id;
     const request = await fetch(url, {
       method: 'PATCH',
       body: JSON.stringify(item),
@@ -61,11 +61,11 @@ export class LocalApiSimpsonsRepository implements Repository<Character> {
         `Error ${request.status}: ${request.statusText}. Try again.`
       );
     const data = await request.json();
-    return this.mapData(data);
+    return this.mapLocalData(data);
   }
 
   async delete(_id: string): Promise<void> {
-    const url = this.urlBase + '/' + _id; //aquí no sé cómo coger el elemento para borrarlo, ya que no tiene un id específico
+    const url = this.localUrl + '/' + _id; //aquí no sé cómo coger el elemento para borrarlo, ya que no tiene un id específico
     const request = await fetch(url, {
       method: 'DELETE',
     });

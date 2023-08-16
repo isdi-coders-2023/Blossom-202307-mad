@@ -1,25 +1,25 @@
 import { LocalApiSimpsonsRepository } from './local-api-characters-repository';
 
-describe('Given ApiCharactersRepository class ', () => {
-  describe('When we instantiate it', () => {
-    const repository = new LocalApiSimpsonsRepository('');
+describe('Given the class LocalApiSimpsonsRepository', () => {
+  describe('When I make an instance of it', () => {
+    const localRepository = new LocalApiSimpsonsRepository('');
 
-    test('Then the method getAll should be used', () => {
+    test('Then the method getTotal should be used', () => {
       global.fetch = jest.fn().mockResolvedValueOnce({
         ok: true,
         json: jest.fn().mockResolvedValue(['Test']),
       });
-      repository.getAll();
+      localRepository.getTotal();
       expect(global.fetch).toHaveBeenCalled();
     });
 
-    test('Then the method getAll should give error', () => {
+    test('Then the method getTotal should give error', () => {
       global.fetch = jest.fn().mockResolvedValueOnce({
         ok: false,
         json: jest.fn().mockResolvedValue('error'),
       });
 
-      expect(repository.getAll()).rejects.toThrow();
+      expect(localRepository.getTotal()).rejects.toThrow();
     });
 
     test('Then the method update should be used', () => {
@@ -47,7 +47,7 @@ describe('Given ApiCharactersRepository class ', () => {
         updatedAt: 'test_update',
         id: 'testid',
       };
-      repository.update(characterTest.id, characterUpdatedTest);
+      localRepository.update(characterTest.id, characterUpdatedTest);
       expect(global.fetch).toHaveBeenCalled();
     });
     test('Then the method update should give error', () => {
@@ -76,7 +76,7 @@ describe('Given ApiCharactersRepository class ', () => {
         id: 'testid',
       };
       expect(
-        repository.update(characterTest.id, characterUpdatedTest)
+        localRepository.update(characterTest.id, characterUpdatedTest)
       ).rejects.toThrow();
     });
 
@@ -95,7 +95,7 @@ describe('Given ApiCharactersRepository class ', () => {
         state: 'test',
         id: 'test',
       };
-      repository.create(newCharacterTest);
+      localRepository.create(newCharacterTest);
       expect(global.fetch).toHaveBeenCalled();
     });
     test('Then the method create should give error', () => {
@@ -114,7 +114,7 @@ describe('Given ApiCharactersRepository class ', () => {
         id: 'test',
       };
 
-      expect(repository.create(newCharacterTest)).rejects.toThrow();
+      expect(localRepository.create(newCharacterTest)).rejects.toThrow();
     });
     test('Then the method delete should be used', () => {
       global.fetch = jest.fn().mockResolvedValueOnce({
@@ -131,7 +131,7 @@ describe('Given ApiCharactersRepository class ', () => {
         state: 'test',
         id: 'test',
       };
-      repository.create(newCharacterTest);
+      localRepository.create(newCharacterTest);
       expect(global.fetch).toHaveBeenCalled();
     });
     test('Then the method delete should give error', () => {
@@ -143,7 +143,7 @@ describe('Given ApiCharactersRepository class ', () => {
         id: 'testid',
       };
 
-      expect(repository.delete(newCharacterTest.id)).rejects.toThrow();
+      expect(localRepository.delete(newCharacterTest.id)).rejects.toThrow();
     });
   });
 });
