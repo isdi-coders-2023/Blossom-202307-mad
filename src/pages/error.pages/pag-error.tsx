@@ -1,10 +1,10 @@
 import styles from './pag-error.module.scss';
 
-export function PagError() {
+export default function PagError() {
   return (
     <main className={styles['mainError']}>
       <h2 className={styles['h2Error']}>
-        <span>! HORROR !</span> <span>¡ EL 404 ERROR !</span>
+        <span>¡ HORROR !</span> <span>¡ EL 404 ERROR !</span>
       </h2>
       <img
         className={styles['imgError']}

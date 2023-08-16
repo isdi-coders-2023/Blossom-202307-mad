@@ -1,11 +1,11 @@
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
-import { PagError } from './components/pag-error/pag-error';
+import { AppRouter } from './components/routes/app.routes';
 function App() {
   return (
     <div>
       <Header></Header>
-      <PagError />
+      <AppRouter></AppRouter>
       <Footer />
     </div>
   );
