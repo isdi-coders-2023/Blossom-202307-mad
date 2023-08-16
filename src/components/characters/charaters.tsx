@@ -1,26 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
-import { ApiURL } from '../../Data/data';
-import { ApiSimpsonsRepository } from '../api-repository/api-characters-repository';
+import { useContext, useEffect } from 'react';
+import { WebContext } from '../../context/app-context';
 import { Card } from '../card/card';
 
 export function Characters() {
-  const [characters, setCharacters] = useState([]);
-  const [loadMore, setLoadMore] = useState(ApiURL);
-
-  const loadCharacters = useCallback(async (): Promise<void> => {
-    const repo = new ApiSimpsonsRepository(loadMore);
-    try {
-      const characterData = await repo.getAll();
-      setCharacters(characterData.docs);
-      setLoadMore(ApiURL + characterData.nextPage);
-    } catch {
-      console.log('Error');
-    }
-  }, []);
+  const {
+    charactersContext: { characters, loadCharacters },
+  } = useContext(WebContext);
 
   useEffect(() => {
     loadCharacters();
-  }, []);
+  }, [loadCharacters]);
 
   return (
     <div>
@@ -29,7 +18,6 @@ export function Characters() {
           <Card key={index} character={item}></Card>
         ))}
       </ul>
-      <button onClick={() => loadCharacters()}>Next</button>
     </div>
   );
 }

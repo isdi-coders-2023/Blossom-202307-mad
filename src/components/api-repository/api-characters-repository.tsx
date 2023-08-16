@@ -28,6 +28,11 @@ export class ApiSimpsonsRepository implements SimpleRepository<Character> {
       );
     }
     const data = await request.json();
-    return data.forEach((item: CharacterIncoming) => this.mapData(item));
+    const dataCharacters = data.docs;
+    const newDataCharacters = dataCharacters.map((item: CharacterIncoming) =>
+      this.mapData(item)
+    );
+
+    return newDataCharacters;
   }
 }
