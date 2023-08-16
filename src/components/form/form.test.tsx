@@ -24,8 +24,8 @@ describe('Given the component Form', () => {
       expect(element).toBeInTheDocument();
     });
 
-    test('Then, the button should be in the document', async () => {
-      const element = await screen.getByRole('button');
+    test('Then, the button should be in the document', () => {
+      const element = screen.getByRole('button');
       expect(element.textContent).toBe('Añadir');
     });
 
@@ -50,7 +50,6 @@ describe('Given the component Form', () => {
       expect(inputSelectedElements[0]).toBeChecked;
 
       await fireEvent.submit(formElement);
-      //expect(newCharacterMock).toHaveBeenCalledWith(mockCharacter);
     });
   });
 });
