@@ -8,13 +8,13 @@ export function Card({ character }: Props) {
     <li className="listCharacters">
       <div className="cardCharacter">
         <img
-          src={character.Imagen}
+          src={character.image}
           alt="imagen de los simpsons"
           className="characterPicture"
         />
         <div>
-          <h2>{character.Nombre}</h2>
-          <h3>{character.Ocupacion}</h3>
+          <h2>{character.name}</h2>
+          <h3>{character.job}</h3>
         </div>
       </div>
     </li>
