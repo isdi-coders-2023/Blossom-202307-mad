@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ApiURL } from '../../Data/data';
-import { Character } from '../../model/character';
 import { ApiSimpsonsRepository } from '../api-repository/api-characters-repository';
 import { Card } from '../card/card';
 
@@ -8,17 +7,16 @@ export function Characters() {
   const [characters, setCharacters] = useState([]);
   const [loadMore, setLoadMore] = useState(ApiURL);
 
-  async function loadCharacters(): Promise<Character> {
+  const loadCharacters = useCallback(async (): Promise<void> => {
+    const repo = new ApiSimpsonsRepository(loadMore);
     try {
-      const repo = new ApiSimpsonsRepository(loadMore);
       const characterData = await repo.getAll();
       setCharacters(characterData.docs);
       setLoadMore(ApiURL + characterData.nextPage);
-      console.log(loadMore);
     } catch {
       console.log('Error');
     }
-  }
+  }, []);
 
   useEffect(() => {
     loadCharacters();
