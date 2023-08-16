@@ -1,14 +1,22 @@
+import styles from './header.module.scss';
+
 export function Header() {
   return (
     <>
-      <h1>Los Simpsons</h1>
-      <h2>
-        <img src="/The_Simpsons_yellow_logo.svg" alt="Logo de los simpsons" />
-      </h2>
-      <div>
-        <button>Favoritos</button>
-        <button>Crear Personaje de los Simpsons</button>
-      </div>
+      <header>
+        <h1 className={`${styles.mainheader} ${styles.hidden}`}>Los Simpson</h1>
+        <h2>
+          <img
+            className={styles['logo']}
+            src="./public/Simpson_logo.png"
+            alt="EL logo de Los Simpson"
+          />
+        </h2>
+        <div className={styles['buttcontainer']}>
+          <button className={styles['favbutton']}>FAVORITOS</button>
+          <button className={styles['crearbutton']}>CREAR PERSONAJE</button>
+        </div>
+      </header>
     </>
   );
 }

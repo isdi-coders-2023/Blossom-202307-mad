@@ -15,8 +15,8 @@ export class ApiSimpsonsRepository implements Repository<Character> {
       );
     }
     const data = await request.json();
-    const characters = data.docs;
-    return characters;
+
+    return data;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

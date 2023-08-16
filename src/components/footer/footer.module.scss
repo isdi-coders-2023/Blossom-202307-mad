@@ -1,0 +1,30 @@
+.mainFooter {
+  box-sizing: border-box;
+  color: white;
+  background-color: black;
+  padding: 20px;
+  width: 100vw;
+  font-family: 'Arimo', sans-serif;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .address {
+    padding: 1rem;
+    display: flex;
+    max-width: 200px;
+  }
+  .laneFooter {
+    background-color: #fffefe;
+    height: 60px;
+    border-radius: 5px;
+    width: 5px;
+    margin-inline: 1rem;
+  }
+  .imgFooter {
+    text-align: right;
+    width: 7rem;
+    float: right;
+  }
+}
