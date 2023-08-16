@@ -1,3 +1,16 @@
+export type ApiResponse = {
+  docs: object[];
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  limit: number;
+  nextPage: number;
+  page: number;
+  pagingCounter: number;
+  prevPage: number;
+  totalDocs: number;
+  totalPages: number;
+};
+
 export type CharacterNoId = {
   state: string;
   gender: string;

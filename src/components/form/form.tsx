@@ -16,14 +16,19 @@ export function Form() {
       history: (formElement.elements.namedItem('history') as HTMLFormElement)
         .value,
       image: (formElement.elements.namedItem('image') as HTMLFormElement).value,
-      updatedAt: (formElement.elements.namedItem('date') as HTMLFormElement)
-        .value,
+      updatedAt: (
+        formElement.elements.namedItem('updatedAt') as HTMLFormElement
+      ).value,
     };
-    return newCharacter;
+    console.log(newCharacter);
   };
-
   return (
-    <form action="" onSubmit={handleSubmit} className={styles['form']}>
+    <form
+      role="form"
+      action=""
+      onSubmit={handleSubmit}
+      className={styles['form']}
+    >
       <h2 className={styles['formTitle']}>¡Crea tu propio personaje!</h2>
       <div className={styles['formContainer']}>
         <input
@@ -91,6 +96,7 @@ export function Form() {
           </label>
 
           <input
+            role="date"
             type="date"
             id="updatedAt"
             name="updatedAt"
