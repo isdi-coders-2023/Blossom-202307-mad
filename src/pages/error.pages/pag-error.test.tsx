@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { PagError } from './pag-error';
+import PagError from './pag-error';
+
 describe('Given the componet PageError', () => {
   describe('When we render it', () => {
     render(<PagError></PagError>);
