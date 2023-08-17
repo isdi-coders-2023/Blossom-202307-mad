@@ -7,7 +7,7 @@ import { AppRouter } from './app.routes';
 describe('Given the app routes component', () => {
   describe('When we render error Router', () => {
     const mockedPagError = jest.fn().mockReturnValue(<span>¡ HORROR !</span>);
-    jest.mock('../../pages/error.pages/pag-error', () => mockedPagError);
+    jest.mock('../../pages/pag-error/pag-error', () => mockedPagError);
     //'../pag-error/pag-error'
 
     let element: HTMLElement;
