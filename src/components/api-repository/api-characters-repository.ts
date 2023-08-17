@@ -1,4 +1,8 @@
-import { Character, CharacterIncoming } from '../../model/character';
+import {
+  ApiResponse,
+  Character,
+  CharacterIncoming,
+} from '../../model/character';
 import { SimpleRepository } from './repository';
 
 export class ApiSimpsonsRepository implements SimpleRepository<Character> {
@@ -32,7 +36,17 @@ export class ApiSimpsonsRepository implements SimpleRepository<Character> {
     const newDataCharacters = dataCharacters.map((item: CharacterIncoming) =>
       this.mapData(item)
     );
-
     return newDataCharacters;
+  }
+
+  async getNextPage(): Promise<ApiResponse> {
+    const request = await fetch(this.urlBase);
+    if (!request.ok) {
+      throw new Error(
+        `Error ${request.status}: ${request.statusText}. Try again.`
+      );
+    }
+    const data = await request.json();
+    return data;
   }
 }
