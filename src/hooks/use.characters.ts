@@ -15,19 +15,17 @@ export function useCharacters() {
   const loadCharacters = useCallback(
     async (page: number) => {
       try {
-        counter = counter + page;
-        console.log(counter);
-        console.log(`${baseUrl}${counter}`);
-
-        const characters = await (await repo).getAll(counter);
-
-        console.log(characters);
-        dispatch(loadCharacterActionCreator(characters));
+        if (counter === 1 && page === -1) {
+          const characters = await (await repo).getAll(counter);
+          dispatch(loadCharacterActionCreator(characters));
+        } else {
+          counter = counter + page;
+          const characters = await (await repo).getAll(counter);
+          dispatch(loadCharacterActionCreator(characters));
+        }
       } catch (error) {
         console.error((error as Error).message);
       }
-
-      console.log(counter);
       return counter;
     },
     [repo]
