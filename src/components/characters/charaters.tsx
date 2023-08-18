@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { WebContext } from '../../context/app-context';
+import { Character } from '../../model/character';
 import { Card } from '../card/card';
 
 export function Characters() {
@@ -8,16 +9,18 @@ export function Characters() {
   } = useContext(WebContext);
 
   useEffect(() => {
-    loadCharacters();
+    loadCharacters(0);
   }, [loadCharacters]);
 
   return (
     <div>
       <ul>
-        {characters.map((item) => (
-          <Card key={item.id} character={item}></Card>
+        {characters.map((item: Character, index: number) => (
+          <Card key={index} character={item}></Card>
         ))}
       </ul>
+      <button onClick={() => loadCharacters(1)}>Siguiente</button>
+      <button onClick={() => loadCharacters(-1)}>Previo</button>
     </div>
   );
 }
