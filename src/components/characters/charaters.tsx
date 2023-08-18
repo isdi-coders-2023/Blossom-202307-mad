@@ -14,8 +14,8 @@ export function Characters() {
   return (
     <div>
       <ul>
-        {characters.map((item, index) => (
-          <Card key={index} character={item}></Card>
+        {characters.map((item) => (
+          <Card key={item.id} character={item}></Card>
         ))}
       </ul>
     </div>

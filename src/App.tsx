@@ -5,11 +5,9 @@ import { AppRouter } from './components/routes/app.routes';
 function App() {
   return (
     <div>
-      <WebContextProvider>
-        <Header></Header>
-        <AppRouter></AppRouter>
-        <Footer></Footer>
-      </WebContextProvider>
+      <Header></Header>
+      <AppRouter></AppRouter>
+      <Footer></Footer>
     </div>
   );
 }

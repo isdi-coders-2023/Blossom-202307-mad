@@ -1,9 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './pag-error.module.scss';
 
 export default function PagError() {
-  const navigate = useNavigate();
-
   return (
     <main className={styles['mainError']}>
       <p className={styles['pError']}>
@@ -17,12 +15,9 @@ export default function PagError() {
       <p className={styles['pNarices']}>
         <span>¿QUÉ NARICES</span> <span>ESTABAS BUSCANDO?</span>
       </p>
-      <button
-        onClick={() => navigate('/home')}
-        className={styles['buttonAtras']}
-      >
-        ATRÁS
-      </button>
+      <Link to={'/home'} className={styles['buttonAtras']}>
+        <h3>ATRÁS</h3>
+      </Link>
     </main>
   );
 }

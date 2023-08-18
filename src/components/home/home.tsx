@@ -1,9 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './home.module.scss';
 
 export function Home() {
-  const navigate = useNavigate();
-
   return (
     <section className={styles['home']}>
       <h2 className={styles['mainTitle']}>
@@ -16,14 +14,14 @@ export function Home() {
         alt="Una imagen con personajes de Los Simpson"
       />
 
-      <button
+      <Link
         role="button"
         id="buttonSimpson"
         className={styles['buttonSimpson']}
-        onClick={() => navigate('/form')}
+        to={'/form'}
       >
-        Simpsonlandia
-      </button>
+        <h3>Simpsonlandia</h3>
+      </Link>
     </section>
   );
 }
