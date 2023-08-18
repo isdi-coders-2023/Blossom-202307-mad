@@ -1,13 +1,28 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+
 import { Header } from './header';
 
-describe('Given the component Header', () => {
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
+describe('Given Home component', () => {
   describe('When we render it', () => {
-    render(<Header></Header>);
-    test('The component should be in the document', () => {
-      const element = screen.getAllByRole('heading');
-      expect(element[0]).toBeInTheDocument();
+    let buttons: HTMLButtonElement[];
+    beforeEach(() => {
+      render(<Header></Header>);
+      buttons = screen.getAllByRole('button');
+    });
+
+    test('the navigation function should be called', async () => {
+      await fireEvent.click(buttons[0]);
+      await fireEvent.click(buttons[1]);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });

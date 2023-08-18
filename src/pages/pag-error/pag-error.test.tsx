@@ -1,13 +1,28 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import PagError from './pag-error';
+
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
 
 describe('Given the componet PageError', () => {
   describe('When we render it', () => {
-    render(<PagError></PagError>);
-    test('the componente should be in the document', () => {
-      const element = screen.getByRole('img');
-      expect(element).toBeInTheDocument();
+    let button: HTMLButtonElement;
+    beforeEach(() => {
+      render(<PagError></PagError>);
+      button = screen.getByRole('button');
+    });
+    test('the component should be in the document', () => {
+      expect(button).toBeInTheDocument();
+    });
+    test('the navigation function should be called', async () => {
+      await fireEvent.click(button);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });

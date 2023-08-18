@@ -3,11 +3,11 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Home } from './home';
 
-const mockedUsedNavigate = jest.fn();
+const mockedUsedSimpsons = jest.fn();
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
+  useNavigate: () => mockedUsedSimpsons,
 }));
 
 describe('Given Home component', () => {
@@ -24,7 +24,7 @@ describe('Given Home component', () => {
     test('the navigation function should be called', async () => {
       await fireEvent.click(button);
 
-      expect(mockedUsedNavigate).toHaveBeenCalled();
+      expect(mockedUsedSimpsons).toHaveBeenCalled();
     });
   });
 });
