@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './pag-error.module.scss';
 
 export default function PagError() {
+  const navigate = useNavigate();
+
   return (
     <main className={styles['mainError']}>
       <p className={styles['pError']}>
-        <span>¡HORROR!</span> <span>¡EL ERROR 404!</span>
+        <span>¡HORROR!</span> <span>¡Un 404 error!</span>
       </p>
       <img
         className={styles['imgError']}
@@ -14,7 +17,12 @@ export default function PagError() {
       <p className={styles['pNarices']}>
         <span>¿QUÉ NARICES</span> <span>ESTABAS BUSCANDO?</span>
       </p>
-      <button className={styles['buttonAtras']}>ATRÁS</button>
+      <button
+        onClick={() => navigate('/home')}
+        className={styles['buttonAtras']}
+      >
+        ATRÁS
+      </button>
     </main>
   );
 }
