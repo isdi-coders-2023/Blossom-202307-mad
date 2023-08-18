@@ -1,0 +1,16 @@
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  color: black;
+  display: inline;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #78c7f0;
+  font-size: larger;
+  font-weight: bold;
+  margin-right: 30px;
+}

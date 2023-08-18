@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './home.module.scss';
 
 export function Home() {
+  console.log(styles);
   return (
     <section className={styles['home']}>
       <h2 className={styles['mainTitle']}>
