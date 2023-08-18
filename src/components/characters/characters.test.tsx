@@ -14,7 +14,6 @@ describe('Given the component Characters', () => {
         loadCharacters: jest.fn(),
       },
     } as unknown as WebContextStructure;
-    screen.debug;
     render(
       <WebContext.Provider value={m}>
         <Characters></Characters>

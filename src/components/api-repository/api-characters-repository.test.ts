@@ -10,10 +10,8 @@ describe('Given ApiCharactersRepository class ', () => {
         json: jest.fn().mockResolvedValue({ docs: ['Test'] }),
       });
 
-      // act
       repository.getAll(0);
 
-      // assert
       await expect(global.fetch).toHaveBeenCalled();
     });
 
