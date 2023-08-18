@@ -17,15 +17,13 @@
 
   .buttonSimpson {
     margin: 1.5rem 2rem 3rem 2rem;
-    width: 9.25rem;
-    height: 2.775rem;
-    border-radius: 25px;
+    padding: 1rem;
+    border-radius: 50px;
+    text-decoration: none;
     background-color: #78c7f0;
     color: black;
     font-family: 'Arimo', sans-serif;
-    font-size: 1.125rem;
-    font-style: normal;
-    line-height: 129.5%; /* 1.45688rem */
+    font-size: 1rem;
     border: 2px solid black;
   }
   .buttonSimpson:hover {
