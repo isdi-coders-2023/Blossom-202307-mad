@@ -17,6 +17,7 @@ export function Home() {
       />
 
       <button
+        role="button"
         id="buttonSimpson"
         className={styles['buttonSimpson']}
         onClick={() => navigate('/form')}
