@@ -7,8 +7,13 @@ describe('Given ApiCharactersRepository class ', () => {
     test('Then the method getAll should be used', async () => {
       global.fetch = jest.fn().mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(['Test']),
+        json: jest.fn().mockResolvedValue({ docs: ['Test'] }),
       });
+
+      // act
+      repository.getAll(0);
+
+      // assert
       await expect(global.fetch).toHaveBeenCalled();
     });
 
@@ -18,7 +23,7 @@ describe('Given ApiCharactersRepository class ', () => {
         json: jest.fn().mockResolvedValue('error'),
       });
 
-      await expect(repository.getAll()).rejects.toThrow();
+      await expect(repository.getAll(0)).rejects.toThrow();
     });
   });
 });

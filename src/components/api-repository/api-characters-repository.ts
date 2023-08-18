@@ -1,8 +1,4 @@
-import {
-  ApiResponse,
-  Character,
-  CharacterIncoming,
-} from '../../model/character';
+import { Character, CharacterIncoming } from '../../model/character';
 import { SimpleRepository } from './repository';
 
 export class ApiSimpsonsRepository implements SimpleRepository<Character> {
@@ -24,8 +20,8 @@ export class ApiSimpsonsRepository implements SimpleRepository<Character> {
     } as Character;
   }
 
-  async getAll(): Promise<Character[]> {
-    const request = await fetch(this.urlBase);
+  async getAll(page: number): Promise<Character[]> {
+    const request = await fetch(`${this.urlBase}${page}`);
     if (!request.ok) {
       throw new Error(
         `Error ${request.status}: ${request.statusText}. Try again.`
@@ -33,20 +29,10 @@ export class ApiSimpsonsRepository implements SimpleRepository<Character> {
     }
     const data = await request.json();
     const dataCharacters = data.docs;
-    const newDataCharacters = dataCharacters.map((item: CharacterIncoming) =>
-      this.mapData(item)
+    const newDataCharacters: Character[] = dataCharacters.map(
+      (item: CharacterIncoming) => this.mapData(item)
     );
-    return newDataCharacters;
-  }
 
-  async getNextPage(): Promise<ApiResponse> {
-    const request = await fetch(this.urlBase);
-    if (!request.ok) {
-      throw new Error(
-        `Error ${request.status}: ${request.statusText}. Try again.`
-      );
-    }
-    const data = await request.json();
-    return data;
+    return newDataCharacters;
   }
 }

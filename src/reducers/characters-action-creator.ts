@@ -5,7 +5,6 @@ export type CharacterAction = {
   type: string;
   payload: Character[] | Character | string;
 };
-
 export const loadCharacterActionCreator = (
   data: Character[]
 ): CharacterAction => {

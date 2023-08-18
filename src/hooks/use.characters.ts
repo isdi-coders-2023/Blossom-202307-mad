@@ -5,8 +5,10 @@ import { simpsonReducer } from '../reducers/characters-reducer';
 
 const ApiURL = 'https://apisimpsons.fly.dev/api/personajes?limit=5&page=';
 
+const counter = 0;
+
 export function useCharacters() {
-  const repo = useMemo(() => new ApiSimpsonsRepository(ApiURL), []);
+  const repo = useMemo(() => new ApiSimpsonsRepository(ApiURL, counter), []);
   const [characters, dispatch] = useReducer(simpsonReducer, []);
 
   const loadCharacters = useCallback(async () => {

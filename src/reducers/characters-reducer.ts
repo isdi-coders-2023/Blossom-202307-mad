@@ -11,7 +11,6 @@ export function simpsonReducer(
   switch (action.type) {
     case actionTypeNames.load:
       return action.payload as Character[];
-
     default:
       return { ...state };
   }
