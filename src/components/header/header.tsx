@@ -1,8 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
 
 export function Header() {
-  const navigate = useNavigate();
   return (
     <>
       <header>
@@ -15,18 +14,12 @@ export function Header() {
         />
 
         <div className={styles['buttcontainer']}>
-          <button
-            onClick={() => navigate('/home')}
-            className={styles['favbutton']}
-          >
-            HOME
-          </button>
-          <button
-            onClick={() => navigate('/form')}
-            className={styles['crearbutton']}
-          >
-            CREAR PERSONAJE
-          </button>
+          <Link to={'/home'} className={styles['favbutton']}>
+            <h2>HOME</h2>
+          </Link>
+          <Link to={'/form'} className={styles['crearbutton']}>
+            <h2>CREAR PERSONAJE</h2>
+          </Link>
         </div>
       </header>
     </>

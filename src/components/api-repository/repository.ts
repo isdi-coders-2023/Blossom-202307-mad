@@ -6,5 +6,5 @@ export interface Repository<T extends { id: string | number }> {
 }
 
 export interface SimpleRepository<T extends { id: string | number }> {
-  getAll(): Promise<T[]>;
+  getAll(number: number): Promise<T[]>;
 }

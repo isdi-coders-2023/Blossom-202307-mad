@@ -20,14 +20,19 @@ export class ApiSimpsonsRepository implements SimpleRepository<Character> {
     } as Character;
   }
 
-  async getAll(): Promise<Character[]> {
-    const request = await fetch(this.urlBase);
+  async getAll(page: number): Promise<Character[]> {
+    const request = await fetch(`${this.urlBase}${page}`);
     if (!request.ok) {
       throw new Error(
         `Error ${request.status}: ${request.statusText}. Try again.`
       );
     }
     const data = await request.json();
-    return data.forEach((item: CharacterIncoming) => this.mapData(item));
+    const dataCharacters = data.docs;
+    const newDataCharacters: Character[] = dataCharacters.map(
+      (item: CharacterIncoming) => this.mapData(item)
+    );
+
+    return newDataCharacters;
   }
 }
