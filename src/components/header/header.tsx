@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './header.module.scss';
 
 export function Header() {
+  const navigate = useNavigate();
   return (
     <>
       <header>
@@ -13,8 +15,18 @@ export function Header() {
         />
 
         <div className={styles['buttcontainer']}>
-          <button className={styles['favbutton']}>FAVORITOS</button>
-          <button className={styles['crearbutton']}>CREAR PERSONAJE</button>
+          <button
+            onClick={() => navigate('/home')}
+            className={styles['favbutton']}
+          >
+            HOME
+          </button>
+          <button
+            onClick={() => navigate('/form')}
+            className={styles['crearbutton']}
+          >
+            CREAR PERSONAJE
+          </button>
         </div>
       </header>
     </>

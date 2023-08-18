@@ -1,14 +1,14 @@
-import { Characters } from './components/characters/charaters';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
-import { WebContextProvider } from './context/app-context-provider';
+import { AppRouter } from './components/routes/app.routes';
+
 function App() {
   return (
     <div>
       <WebContextProvider>
         <Header></Header>
-        <Characters></Characters>
-        <Footer />
+        <AppRouter></AppRouter>
+        <Footer></Footer>
       </WebContextProvider>
     </div>
   );
