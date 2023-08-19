@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router';
+import { Detail } from '../details/detail';
 
 const PagError = lazy(() => import('../../pages/pag-error/pag-error'));
 const PagForm = lazy(() => import('../../pages/pag-form/pag-form'));
@@ -15,6 +16,8 @@ export const AppRouter = () => {
         <Route path="*" element={<PagError></PagError>}></Route>
         <Route path="/form" element={<PagForm></PagForm>}></Route>
         <Route path="/home" element={<PagHome></PagHome>}></Route>
+        <Route path="/detail/:id" element={<Detail></Detail>}></Route>
+
         <Route
           path="/simpsons"
           element={<PagCharacters></PagCharacters>}
