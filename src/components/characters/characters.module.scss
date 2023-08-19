@@ -1,4 +1,5 @@
 .btns {
+  background-color: rgb(184, 233, 246);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,4 +14,7 @@
   font-size: larger;
   font-weight: bold;
   margin-right: 30px;
+}
+.btn:hover {
+  transform: translateY(-3px);
 }

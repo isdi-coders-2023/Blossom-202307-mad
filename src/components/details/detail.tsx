@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { WebContext } from '../../context/app-context';
 import { Character } from '../../model/character';
+import styles from './detail.module.scss';
 
 export function Detail() {
   const {
@@ -14,7 +15,7 @@ export function Detail() {
   ) as Character;
 
   return (
-    <ul className="list-unstyled">
+    <ul className={styles['list-unstyled']}>
       <li>
         <img
           src={character.image}
@@ -26,16 +27,16 @@ export function Detail() {
         <p>Nombre: {character.name}</p>
       </li>
       <li>
-        <button className="butonFavorites">Añadir a Favoritos</button>
+        <button className={styles['btnAdd']}>Añadir a Favoritos</button>
       </li>
       <li>
         <p>Historia: {character.history}</p>
       </li>
       <li>
-        <button className="buttonDelete">Borrar</button>
+        <button className={styles['buttonDelete']}>Borrar</button>
       </li>
       <li>
-        <button className="buttonClose">Atras</button>
+        <button className={styles['btnBack']}>Atras</button>
       </li>
     </ul>
   );
