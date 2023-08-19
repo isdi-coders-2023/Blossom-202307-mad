@@ -10,9 +10,9 @@ export function Card({ character }: Props) {
     <li className={styles['listCharacters']}>
       <Link to={`/detail/${character.id}`} className={styles['cardCharacter']}>
         <img
+          className={styles['characterPicture']}
           src={character.image}
           alt="imagen de los simpsons"
-          className="characterPicture"
         />
 
         <div className={styles['text']}>
