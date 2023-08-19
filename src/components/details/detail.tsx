@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { WebContext } from '../../context/app-context';
 import { Character } from '../../model/character';
 import styles from './detail.module.scss';
@@ -32,7 +32,10 @@ export function Detail() {
           <button className={`${styles.button} ${styles.bigButton}`}>
             BORRAR
           </button>
-          <button className={styles['button']}>ATRÁS</button>
+
+          <Link to={'/simpsons'} className={styles['button']}>
+            <h3>ATRÁS</h3>
+          </Link>
         </div>
       </div>
     </div>
