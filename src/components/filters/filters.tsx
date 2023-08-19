@@ -1,16 +1,32 @@
+import { useContext } from 'react';
+import { WebContext } from '../../context/app-context';
 import styles from './filters.module.scss';
 
 export function Filters() {
+  const {
+    charactersContext: { filterByGender },
+  } = useContext(WebContext);
+
+  const handleGenderChange = (event) => {
+    const selectedGender = event.target.value;
+    filterByGender(selectedGender);
+  };
+
   return (
     <div className={styles['filters']}>
       <label className={styles['filterPhrase']}>
         Puedes usar uno de estos filtros:
       </label>
       <div className={styles['box']}>
-        <select className={styles['select']} name="gender" id="gender-select">
+        <select
+          onChange={handleGenderChange}
+          className={styles['select']}
+          name="gender"
+          id="gender-select"
+        >
           <option value="">--Filtra por género--</option>
-          <option value="men">Masculino</option>
-          <option value="women">Femenino</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
         </select>
       </div>
       <div>

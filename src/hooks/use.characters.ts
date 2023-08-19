@@ -6,7 +6,7 @@ import { simpsonReducer } from '../reducers/characters-reducer';
 export function useCharacters() {
   const [characters, dispatch] = useReducer(simpsonReducer, []);
 
-  const baseUrl = 'https://apisimpsons.fly.dev/api/personajes?limit=5&page=';
+  const baseUrl = 'https://apisimpsons.fly.dev/api/personajes?limit=15&page=';
 
   const repo = useMemo(() => new ApiSimpsonsRepository(baseUrl), []);
 
@@ -31,8 +31,16 @@ export function useCharacters() {
     [repo]
   );
 
+  const filterByGender = async (gender: string) => {
+    const filteredCharacters = characters.filter(
+      (character) => character.gender === gender
+    );
+    dispatch(loadCharacterActionCreator(filteredCharacters));
+  };
+
   return {
     characters,
     loadCharacters,
+    filterByGender,
   };
 }
