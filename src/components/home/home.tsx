@@ -5,7 +5,7 @@ export function Home() {
   console.log(styles);
   return (
     <section className={styles['home']}>
-      <h2 className={styles['mainTitle']}>
+      <h2 role="heading" className={styles['mainTitle']}>
         Descubre los personajes de tu serie favorita
       </h2>
 
