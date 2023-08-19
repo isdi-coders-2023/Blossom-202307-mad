@@ -39,10 +39,13 @@
     text-decoration: none;
     color: black;
   }
-
+  .quitar {
+    display: none;
+  }
   .bigButton {
     background-color: black;
     color: white;
+    display: none;
   }
 }
 .box1 {

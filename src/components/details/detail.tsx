@@ -25,7 +25,9 @@ export function Detail() {
         alt="imagen de los simpsons"
         className={styles.characterPicture}
       />
-      <button className={styles['button']}>AÑADIR A FAVORITOS</button>
+      <button className={`${styles.button} ${styles.quitar}`}>
+        AÑADIR A FAVORITOS
+      </button>
       <div className={styles.box1}>
         <p className={styles['p']}> {character.history}</p>
         <div className={styles.btnDown}>
