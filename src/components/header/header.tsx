@@ -13,7 +13,7 @@ export function Header() {
           alt="EL logo de Los Simpson"
         />
 
-        <div className={styles['buttcontainer']}>
+        <div className={styles['buttcontainer']} id="mainButtons">
           <Link to={'/home'} className={styles['simpsonButton']}>
             <h2>HOME</h2>
           </Link>

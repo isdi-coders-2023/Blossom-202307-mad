@@ -1,10 +1,15 @@
-import { useCallback, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { ApiSimpsonsRepository } from '../components/api-repository/api-characters-repository';
 import { loadCharacterActionCreator } from '../reducers/characters-action-creator';
 import { simpsonReducer } from '../reducers/characters-reducer';
 
+const initialState = {
+  character: [],
+  genderFilter: '',
+};
+
 export function useCharacters() {
-  const [characters, dispatch] = useReducer(simpsonReducer, []);
+  const [characters, dispatch] = useReducer(simpsonReducer, initialState);
 
   const baseUrl = 'https://apisimpsons.fly.dev/api/personajes?limit=15&page=';
 
@@ -31,15 +36,24 @@ export function useCharacters() {
     [repo]
   );
 
-  const filterByGender = async (gender: string) => {
-    const filteredCharacters = characters.filter(
-      (character) => character.gender === gender
-    );
-    dispatch(loadCharacterActionCreator(filteredCharacters));
-  };
+  const filterByGender = useCallback((gender: string) => {
+    dispatch({ type: 'genderFilter', payload: gender });
+  }, []);
+  // Add useCallback to function because the state actualices inside calls setStateuseEffect
+  //el problema es que no funciona... falta useMemo, pero ¿dónde y cómo?
+  useEffect(() => {
+    if (characters.genderFilter) {
+      const filteredCharacters = characters.character.filter(
+        (character) => character.gender === characters.genderFilter
+      );
+      dispatch(loadCharacterActionCreator(filteredCharacters));
+    } else {
+      loadCharacters(0);
+    }
+  }, [characters.genderFilter, characters, loadCharacters]);
 
   return {
-    characters,
+    characters: characters.character,
     loadCharacters,
     filterByGender,
   };
