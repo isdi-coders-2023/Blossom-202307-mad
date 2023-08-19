@@ -71,4 +71,65 @@ describe('Given the app routes component', () => {
       expect(elementForm).toBeInTheDocument();
     });
   });
+  describe('When we render Characters router', () => {
+    const mockedPagCharacter = jest
+      .fn()
+      .mockReturnValue(<button>Siguiente</button>);
+    jest.mock(
+      '../../pages/pag-characters/pag-characters',
+      () => mockedPagCharacter
+    );
+
+    let elementCharacter: HTMLElement;
+    beforeEach(async () => {
+      await act(async () => {
+        render(
+          <Router initialEntries={['/simpsons']} initialIndex={3}>
+            <AppRouter></AppRouter>
+          </Router>
+        );
+      });
+
+      elementCharacter = screen.getByText(/siguiente/i);
+    });
+
+    test('Then it should be in the document', () => {
+      expect(mockedPagCharacter).toHaveBeenCalled();
+      expect(elementCharacter).toBeInTheDocument();
+    });
+  });
+  describe('When we render the deetail page', () => {
+    jest.mock('react-router-dom', () => ({
+      ...jest.requireActual('react-router-dom'),
+      useParams: () => ({
+        id: 'detail',
+      }),
+      useRouteMatch: () => ({ url: '/detail/:detail' }),
+    }));
+    const mockedPagCharacter = jest
+      .fn()
+      .mockReturnValue(<button>Siguiente</button>);
+    jest.mock(
+      '../../pages/pag-characters/pag-characters',
+      () => mockedPagCharacter
+    );
+
+    let elementCharacter: HTMLElement;
+    beforeEach(async () => {
+      await act(async () => {
+        render(
+          <Router initialEntries={['/simpsons']} initialIndex={3}>
+            <AppRouter></AppRouter>
+          </Router>
+        );
+      });
+
+      elementCharacter = screen.getByText(/siguiente/i);
+    });
+
+    test('Then it should be in the document', () => {
+      expect(mockedPagCharacter).toHaveBeenCalled();
+      expect(elementCharacter).toBeInTheDocument();
+    });
+  });
 });
