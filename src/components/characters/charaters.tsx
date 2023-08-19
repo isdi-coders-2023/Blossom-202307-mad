@@ -19,8 +19,8 @@ export function Characters() {
           <Card key={index} character={item}></Card>
         ))}
       </ul>
-      <button onClick={() => loadCharacters(1)}>Siguiente</button>
       <button onClick={() => loadCharacters(-1)}>Previo</button>
+      <button onClick={() => loadCharacters(1)}>Siguiente</button>
     </div>
   );
 }

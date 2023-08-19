@@ -6,7 +6,7 @@ describe('Given Home component', () => {
   describe('When we render it', () => {
     render(<Filters></Filters>);
     test('the component should be in the document', () => {
-      const buttons = screen.getAllByRole('button');
+      const buttons = screen.getAllByRole('option');
       expect(buttons[0]).toBeInTheDocument();
     });
   });

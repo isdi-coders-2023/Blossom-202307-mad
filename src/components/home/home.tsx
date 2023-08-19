@@ -7,7 +7,6 @@ export function Home() {
       <h2 className={styles['mainTitle']}>
         Descubre los personajes de tu serie favorita
       </h2>
-
       <img
         className={styles['mainImage']}
         src="./simpsonscharacters.jpeg"
