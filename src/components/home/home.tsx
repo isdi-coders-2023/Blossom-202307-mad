@@ -18,7 +18,7 @@ export function Home() {
         role="button"
         id="buttonSimpson"
         className={styles['buttonSimpson']}
-        to={'/form'}
+        to={'/simpsons'}
       >
         <h3>Simpsonlandia</h3>
       </Link>

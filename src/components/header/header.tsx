@@ -14,11 +14,11 @@ export function Header() {
         />
 
         <div className={styles['buttcontainer']}>
-          <Link to={'/home'} className={styles['favbutton']}>
+          <Link to={'/home'} className={styles['simpsonButton']}>
             <h2>HOME</h2>
           </Link>
-          <Link to={'/form'} className={styles['crearbutton']}>
-            <h2>CREAR PERSONAJE</h2>
+          <Link to={'/simpsons'} className={styles['simpsonButton']}>
+            <h2>PERSONAJES</h2>
           </Link>
         </div>
       </header>

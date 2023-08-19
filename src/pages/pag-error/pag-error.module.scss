@@ -29,20 +29,21 @@
   }
   .imgError {
     width: 100vw;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
   }
 
   .buttonAtras {
     color: white;
     border: 2px solid white;
     background-color: black;
-    border-radius: 17px;
-    width: 20%;
-    padding: 10px;
-    font-size: 1em;
-    height: auto;
+    margin: 1.5rem 2rem 3rem 2rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1rem;
   }
-  .buttonAtras:link,
   .buttonAtras:visited {
     text-transform: uppercase;
     text-decoration: none;
@@ -60,19 +61,6 @@
   .buttonAtras:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .buttonAtras::after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
   }
 
   .buttonAtras:hover::after {
