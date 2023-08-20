@@ -19,6 +19,7 @@ export function useCharacters() {
           const characters = await (await repo).getAll(counter);
           dispatch(loadCharacterActionCreator(characters));
         } else {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           counter = counter + page;
           const characters = await (await repo).getAll(counter);
           dispatch(loadCharacterActionCreator(characters));

@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { WebContext } from '../../context/app-context';
 import { Character } from '../../model/character';
 import { Card } from '../card/card';
+import styles from './characters.module.scss';
 
 export function Characters() {
   const {
@@ -13,14 +14,21 @@ export function Characters() {
   }, [loadCharacters]);
 
   return (
-    <div>
+    <div id="box" className={styles.buttonBox}>
       <ul>
         {characters.map((item: Character, index: number) => (
           <Card key={index} character={item}></Card>
         ))}
       </ul>
-      <button onClick={() => loadCharacters(1)}>Siguiente</button>
-      <button onClick={() => loadCharacters(-1)}>Previo</button>
+      <div className={styles.btns}>
+        <button className={styles.btn} onClick={() => loadCharacters(-1)}>
+          {'<'}
+        </button>
+
+        <button className={styles['btn']} onClick={() => loadCharacters(1)}>
+          {'>'}
+        </button>
+      </div>
     </div>
   );
 }
