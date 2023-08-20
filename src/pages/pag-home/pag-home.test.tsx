@@ -12,9 +12,7 @@ describe('Given the component Home', () => {
     );
 
     test('the component should be in the document', () => {
-      const home = screen.getByText(
-        'Descubre los personajes de tu serie favorita'
-      );
+      const home = screen.getByRole('heading');
       expect(home).toBeInTheDocument();
     });
   });

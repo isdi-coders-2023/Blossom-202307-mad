@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { WebContextProvider } from './app-context-provider';
 
-describe('Given a PlanetContextProvider', () => {
+describe('Given a WebContextProvider', () => {
   test('Should render children', () => {
     render(
       <WebContextProvider>
