@@ -14,7 +14,7 @@ export function Characters() {
   }, [loadCharacters]);
 
   return (
-    <div className={styles.buttonBox}>
+    <div id="box" className={styles.buttonBox}>
       <ul>
         {characters.map((item: Character, index: number) => (
           <Card key={index} character={item}></Card>
