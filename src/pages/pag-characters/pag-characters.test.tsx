@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { WebContext, WebContextStructure } from '../../context/app-context';
-import { Card } from '../card/card';
-import { Characters } from './charaters';
+import PagCharacters from './pag-characters';
 
-jest.mock('../card/card');
-
-describe('Given the component Characters', () => {
+describe('Given the component PagCharacters', () => {
   describe('When we render it', () => {
     const mock = {
       charactersContext: {
@@ -16,22 +14,16 @@ describe('Given the component Characters', () => {
     } as unknown as WebContextStructure;
     beforeEach(() => {
       render(
-        <WebContext.Provider value={mock}>
-          <Characters></Characters>
-        </WebContext.Provider>
+        <MemoryRouter>
+          <WebContext.Provider value={mock}>
+            <PagCharacters></PagCharacters>
+          </WebContext.Provider>
+        </MemoryRouter>
       );
     });
-
-    test('The component should be in the document', () => {
-      const element = screen.getAllByRole('list');
-      expect(element[0]).toBeInTheDocument();
-      expect(Card).toHaveBeenCalled();
-    });
-
-    test('The function has been called', async () => {
+    test('the component should be in the document', async () => {
       const buttons = screen.getAllByRole('button');
       await fireEvent.click(buttons[0]);
-      await fireEvent.click(buttons[1]);
 
       expect(mock.charactersContext.loadCharacters).toHaveBeenCalled();
     });

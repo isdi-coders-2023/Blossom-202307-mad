@@ -1,0 +1,23 @@
+.buttonBox {
+  background-color: #d4f0ff;
+}
+.btns {
+  background-color: #d4f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  border: 2px solid black;
+  display: inline;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #78c7f0;
+  font-size: larger;
+  font-weight: bold;
+  margin: 30px 15px;
+}
+.btn:hover {
+  transform: translateY(-3px);
+}
