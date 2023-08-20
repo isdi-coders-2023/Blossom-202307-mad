@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { SyntheticEvent, useContext } from 'react';
 import { WebContext } from '../../context/app-context';
 import styles from './filters.module.scss';
 
@@ -7,8 +7,8 @@ export function Filters() {
     charactersContext: { filterByGender },
   } = useContext(WebContext);
 
-  const handleGenderChange = (event) => {
-    const selectedGender = event.target.value;
+  const handleGenderChange = (event: SyntheticEvent) => {
+    const selectedGender = (event.target as HTMLSelectElement).value;
     filterByGender(selectedGender);
   };
 

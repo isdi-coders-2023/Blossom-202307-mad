@@ -39,21 +39,27 @@ export function useCharacters() {
   const filterByGender = useCallback((gender: string) => {
     dispatch({ type: 'genderFilter', payload: gender });
   }, []);
-  // Add useCallback to function because the state actualices inside calls setStateuseEffect
-  //el problema es que no funciona... falta useMemo, pero ¿dónde y cómo?
-  useEffect(() => {
+
+  const filteredCharacters = useMemo(() => {
     if (characters.genderFilter) {
-      const filteredCharacters = characters.character.filter(
+      return characters.character.filter(
         (character) => character.gender === characters.genderFilter
       );
+    } else {
+      return characters.character;
+    }
+  }, [characters.genderFilter, characters.character]);
+
+  useEffect(() => {
+    if (characters.genderFilter) {
       dispatch(loadCharacterActionCreator(filteredCharacters));
     } else {
       loadCharacters(0);
     }
-  }, [characters.genderFilter, characters, loadCharacters]);
+  }, [loadCharacters]);
 
   return {
-    characters: characters.character,
+    characters: filteredCharacters,
     loadCharacters,
     filterByGender,
   };
