@@ -98,7 +98,7 @@ describe('Given the app routes component', () => {
       expect(elementCharacter).toBeInTheDocument();
     });
   });
-  describe('When we render the deetail page', () => {
+  describe('When we render the detail page', () => {
     jest.mock('react-router-dom', () => ({
       ...jest.requireActual('react-router-dom'),
       useParams: () => ({
