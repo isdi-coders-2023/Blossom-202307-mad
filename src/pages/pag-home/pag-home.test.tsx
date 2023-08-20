@@ -12,8 +12,8 @@ describe('Given the component Home', () => {
     );
 
     test('the component should be in the document', () => {
-      const home = screen.getByRole('heading');
-      expect(home).toBeInTheDocument();
+      const home = screen.getAllByRole('heading');
+      expect(home[0]).toBeInTheDocument();
     });
   });
 });
