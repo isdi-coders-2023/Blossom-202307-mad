@@ -30,7 +30,11 @@ export function Filters() {
         </select>
       </div>
       <div>
-        <select className={styles['select']} name="state" id="state-select">
+        <select
+          className={`${styles.select} ${styles.hidden}`}
+          name="state"
+          id="state-select"
+        >
           <option value="">--Filtra por estado--</option>
           <option value="alive">Vivo</option>
           <option value="dead">Fallecido</option>

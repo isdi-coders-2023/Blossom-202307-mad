@@ -9,7 +9,7 @@ export function Header() {
 
         <img
           className={styles['logo']}
-          src="public/Simpson_logo.png"
+          src="../../../Simpson_logo.png"
           alt="EL logo de Los Simpson"
         />
 
