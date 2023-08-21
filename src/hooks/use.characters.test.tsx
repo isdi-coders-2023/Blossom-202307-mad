@@ -16,6 +16,9 @@ describe('Given the custom hook useCharacters', () => {
         <button role="button" onClick={() => filterByGender('Masculino')}>
           2
         </button>
+        <button role="button" onClick={() => loadCharacters(-1)}>
+          3
+        </button>
         <p>Element 1 ID: {characters[0]?.id}</p>
       </>
     );
@@ -46,9 +49,9 @@ describe('Given the custom hook useCharacters', () => {
         .mockResolvedValue([{ id: 'id0001' }]);
       render(<TestComponent></TestComponent>);
     });
-    test('If we click button 1 error should send to console', async () => {
+    test('If we click button 3 error should send to console', async () => {
       const button = screen.getAllByRole('button');
-      await userEvent.click(button[0]);
+      await userEvent.click(button[2]);
     });
   });
   describe('When the component run the hook with errors', () => {

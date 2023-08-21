@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-import { CharacterNoId } from '../../model/character';
+import { Character } from '../../model/character';
 import { Form } from './form';
 
 describe('Given the component Form', () => {
@@ -17,19 +16,19 @@ describe('Given the component Form', () => {
       updatedAt: 'updated',
       state: 'state',
       id: 'id',
-    } as CharacterNoId;
+    } as Character;
 
     test('Then, the title should be in the document', () => {
       const element = screen.getByText(/¡Crea tu propio personaje!/);
       expect(element).toBeInTheDocument();
     });
 
-    test('Then, the button should be in the document', () => {
+    test('Then, the Add character button should be in the document', () => {
       const element = screen.getByRole('button');
       expect(element.textContent).toBe('Añadir');
     });
 
-    test('Then, function should have been called', async () => {
+    test('Then, function Add character should have been called', async () => {
       const formElement = screen.getByRole('form');
       const inputElements = screen.getAllByRole('textbox');
       const inputRadioElements = screen.getAllByRole('radio');
