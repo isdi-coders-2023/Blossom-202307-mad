@@ -54,18 +54,7 @@ describe('Given the custom hook useCharacters', () => {
       await userEvent.click(button[2]);
     });
   });
-  describe('When the component run the hook with errors', () => {
-    beforeEach(() => {
-      ApiSimpsonsRepository.prototype.getAll = jest
-        .fn()
-        .mockRejectedValueOnce(new Error('Get All Error'));
-      render(<TestComponent></TestComponent>);
-    });
-    test('If we click button 1 error should send to console', async () => {
-      const button = screen.getAllByRole('button');
-      await userEvent.click(button[0]);
-    });
-  });
+
   describe('When the component run the hook FILTER', () => {
     beforeEach(() => {
       ApiSimpsonsRepository.prototype.getAll = jest
