@@ -1,12 +1,13 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter as Router } from 'react-router-dom';
 import { WebContext, WebContextStructure } from '../../context/app-context';
 import { Character } from '../../model/character';
 import { Detail } from './detail';
 
-const characterMock = [
+const mockCharacters = [
   {
-    id: 'string',
+    id: '01',
     state: 'string',
     gender: 'string',
     history: 'string',
@@ -28,17 +29,19 @@ describe('Given the component Detail', () => {
   describe('When we render it', () => {
     const characterTest = {
       charactersContext: {
-        characters: characterMock,
+        characters: mockCharacters,
       },
     } as unknown as WebContextStructure;
 
     render(
       <WebContext.Provider value={characterTest}>
-        <Detail />
+        <Router>
+          <Detail />
+        </Router>
       </WebContext.Provider>
     );
     test('the component should be in the document', async () => {
-      const element = await screen.getByRole('image');
+      const element = await screen.getByRole('img');
       expect(element).toBeInTheDocument();
     });
   });

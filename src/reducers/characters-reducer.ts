@@ -2,7 +2,10 @@ import { Character } from '../model/character';
 import { CharacterAction } from './characters-action-creator';
 import { actionTypeNames } from './characters-action-names';
 
-export type CharactersState = Character[];
+export type CharactersState = {
+  character: Character[];
+  genderFilter: string;
+};
 
 export function simpsonReducer(
   state: CharactersState,
@@ -10,8 +13,10 @@ export function simpsonReducer(
 ): CharactersState {
   switch (action.type) {
     case actionTypeNames.load:
-      return action.payload as Character[];
+      return { ...state, character: action.payload as Character[] };
+    case 'genderFilter':
+      return { ...state, genderFilter: action.payload as string };
     default:
-      return { ...state };
+      return state;
   }
 }

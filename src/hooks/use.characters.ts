@@ -1,12 +1,17 @@
-import { useCallback, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { ApiSimpsonsRepository } from '../components/api-repository/api-characters-repository';
 import { loadCharacterActionCreator } from '../reducers/characters-action-creator';
 import { simpsonReducer } from '../reducers/characters-reducer';
 
-export function useCharacters() {
-  const [characters, dispatch] = useReducer(simpsonReducer, []);
+const initialState = {
+  character: [],
+  genderFilter: '',
+};
 
-  const baseUrl = 'https://apisimpsons.fly.dev/api/personajes?limit=5&page=';
+export function useCharacters() {
+  const [characters, dispatch] = useReducer(simpsonReducer, initialState);
+
+  const baseUrl = 'https://apisimpsons.fly.dev/api/personajes?limit=15&page=';
 
   const repo = useMemo(() => new ApiSimpsonsRepository(baseUrl), []);
 
@@ -32,8 +37,31 @@ export function useCharacters() {
     [repo]
   );
 
+  const filterByGender = useCallback((gender: string) => {
+    dispatch({ type: 'genderFilter', payload: gender });
+  }, []);
+
+  const filteredCharacters = useMemo(() => {
+    if (characters.genderFilter) {
+      return characters.character.filter(
+        (character) => character.gender === characters.genderFilter
+      );
+    } else {
+      return characters.character;
+    }
+  }, [characters.genderFilter, characters.character]);
+
+  useEffect(() => {
+    if (characters.genderFilter) {
+      dispatch(loadCharacterActionCreator(filteredCharacters));
+    } else {
+      loadCharacters(0);
+    }
+  }, [loadCharacters]);
+
   return {
-    characters,
+    characters: filteredCharacters,
     loadCharacters,
+    filterByGender,
   };
 }

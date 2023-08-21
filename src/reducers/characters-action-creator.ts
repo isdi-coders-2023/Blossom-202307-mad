@@ -13,3 +13,12 @@ export const loadCharacterActionCreator = (
     payload: data,
   };
 };
+
+export const filterCharacterActionCreator = (
+  data: Character[]
+): CharacterAction => {
+  return {
+    type: actionTypeNames.genderFilter,
+    payload: data,
+  };
+};

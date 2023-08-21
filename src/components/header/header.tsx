@@ -9,11 +9,11 @@ export function Header() {
 
         <img
           className={styles['logo']}
-          src="public/Simpson_logo.png"
+          src="../../../Simpson_logo.png"
           alt="EL logo de Los Simpson"
         />
 
-        <div className={styles['buttcontainer']}>
+        <div className={styles['buttcontainer']} id="mainButtons">
           <Link to={'/home'} className={styles['simpsonButton']}>
             <h2>HOME</h2>
           </Link>

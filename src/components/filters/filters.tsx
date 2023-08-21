@@ -1,19 +1,46 @@
+import { SyntheticEvent, useContext } from 'react';
+import { WebContext } from '../../context/app-context';
 import styles from './filters.module.scss';
 
 export function Filters() {
-  return (
-    <div className={styles['filterButtons']}>
-      <p className={styles['filterPhrase']}>
-        Puedes usar uno de estos filtros:
-      </p>
-      <div>
-        <button id="filterGender" className={styles['buttonFilter']}>
-          Género
-        </button>
+  const {
+    charactersContext: { filterByGender },
+  } = useContext(WebContext);
 
-        <button id="filterState" className={styles['buttonFilter']}>
-          Estado
-        </button>
+  const handleGenderChange = (event: SyntheticEvent) => {
+    const selectedGender = (event.target as HTMLSelectElement).value;
+    filterByGender(selectedGender);
+  };
+
+  return (
+    <div className={styles['filters']}>
+      <label className={styles['filterPhrase']}>
+        Puedes usar uno de estos filtros:
+      </label>
+      <div className={styles['box']}>
+        <select
+          onChange={handleGenderChange}
+          className={styles['select']}
+          name="gender"
+          id="gender-select"
+        >
+          <option value="">--Filtra por género--</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
+      <div>
+        <select
+          className={`${styles.select} ${styles.hidden}`}
+          name="state"
+          id="state-select"
+        >
+          <option value="">--Filtra por estado--</option>
+          <option value="alive">Vivo</option>
+          <option value="dead">Fallecido</option>
+          <option value="unknown">Desconocido</option>
+          <option value="fictitious">Ficticio</option>
+        </select>
       </div>
     </div>
   );
